@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
-
 </head>
 <body>
    <div class="app">
-    <div class="screen join-screen">
+    <div class="screen join-screen active">
         <div class="form-input">
             <h2> Join Chatroom</h2>
             <label>Username</label>
-            <input type="text" id="Username">
+            <input type="text" id="username">
         </div>
         <div class="form-input">
             <button id="join-user">Join</button>
@@ -25,33 +21,15 @@
 
     </div>
 
-    <div class="screen chat-screen active">
+    <div class="screen chat-screen ">
         <div class="header">
             <div class="logo">
 
             </div>
-            <button id="exit-chat">
-
-            </button>
+            <button id="exit-chat">Exit</button>
         </div>
         <div class="messages">
-            <!--dummy message-->
-            <div class="message my-message">
-                <div>
-                    <div class="name">You</div>
-                    <div class="text">Hi</div>
-                </div>
-            </div>
-            <div class="update">
-                abc has joined the conversation
-            </div>
-            <div class="message other-message">
-                <div>
-                    <div class="name">Abc</div>
-                    <div class="text">Hi</div>
-                </div>
-            </div>
-             <!--dummy message-->
+           
         </div>
         <div class="typebox">
             <input type="text" id="message-input">
@@ -59,7 +37,7 @@
         </div>        
     </div>
    </div>
-    <script type="text/javascipt" src="socket.io/socket.io.js"></script>
-    <script type="text/javascipt" src="code.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="code.js"></script>
 </body>
 </html>

@@ -131,7 +131,7 @@ body{
 }
 .chat-screen .messages .message .text
 {
-    word-wrap:break-word;
+    word-wrap:normal;
 }
 .chat-screen .messages .message .update
 {
@@ -148,12 +148,17 @@ body{
 .chat-screen .typebox input
 {
     flex: 1;
+    height: 50px;
+    font-size: 18px;    
+}
+.chat-screen .typebox button
+{
+    flex: 1;
     height: 100%;
     background: #111;
     color: #eee;
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
     border: none;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
