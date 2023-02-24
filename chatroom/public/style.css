@@ -162,3 +162,24 @@ body{
     border: none;
     cursor: pointer;   
 }
+.user-join {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    width: 50%;
+    font-size: 12px;
+}
+.download-chat
+{
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    width: 50%;
+    font-size: 12px;
+    text-align: right;
+}
+.download-chat a
+{
+    color: #111;
+    text-decoration: underline;
+}

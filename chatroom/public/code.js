@@ -1,16 +1,11 @@
 (function(){
-
-    console.log("loadded");
     const app = document.querySelector(".app");
-    console.log(app);
     const socket = io();
-    let uname;
+    let username;
 
     app.querySelector(".join-screen #join-user").addEventListener("click", function(){
 
-        let username = app.querySelector(".join-screen #username").value;
-
-        console.log(username);
+        username = app.querySelector(".join-screen #username").value;
 
         if(username.length == 0)
         {
@@ -18,7 +13,7 @@
         }
 
         socket.emit("newuser", username);
-        uname = username;
+        app.querySelector(".download-chat .download").setAttribute("href",`api/${username}`);
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
 
@@ -33,20 +28,38 @@
             return;
         }
         renderMessage("my",{
-            username:uname,
+            username:username,
             text:message
         })
         socket.emit("chat",{
-            username : uname,
+            username : username,
             text:message
         })
         app.querySelector(".chat-screen #message-input").value = "";
     });
 
-    app.querySelector(".chat-screen #exit-chat").addEventListener("click",function(){
-        socket.emit("exituser",uname);
+    app.querySelector(".chat-screen #exit-chat").addEventListener("click",function(username){    
+        socket.emit("exituser", username);       
         window.location.href = window.location.href;
     });
+    
+    socket.on("user-connected",function(socket_name){
+        userjoinleft(socket_name,'joined')
+
+
+    })
+    socket.on("user-left",function(user){
+       // console.log(user);
+        userjoinleft(user,'left')
+    })
+    function userjoinleft(name, status)
+    {
+        let uselogin=`${name} has ${status}`
+
+        let dvuser = app.querySelector(".chat-screen .user-join");
+        dvuser.append(uselogin);
+    }
+
 
     socket.on("udpate",function(update){
         renderMessage("update", update);
@@ -80,12 +93,13 @@
             `;
             messageContainer.appendChild(el);
 
-        } else if (tyep = "update")
+        } else if (type == "update")
         {
             let el = document.createElement("div");
             el.setAttribute("class", "update");
             el.innerText =  message;
             messageContainer.appendChild(el);
+            console.log("update");
         }
         messageContainer.scrollTop = messageContainer.scrollHeight = messageContainer.clientHeight;
     }

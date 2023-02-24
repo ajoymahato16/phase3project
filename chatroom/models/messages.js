@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 const msgSchema = new mongoose.Schema({
     msg:{
         username:String,
-        type:String,
-        require:true
+        text:String
     }
 })
 
